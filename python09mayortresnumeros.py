@@ -22,3 +22,14 @@ elif (num2 < num1 and num2 < num3):
     menor = num2
 else:
     menor = num3
+#6 , 4 , 2
+# mayor: 6
+# menor: 2
+# 6 + 4 + 2 = 12
+# 12 - 6 - 2 = 4
+suma = num1 + num2 + num3
+intermedio = suma - mayor - menor
+print("Mayor ", mayor)
+print("Menor ", menor)
+print("Intermedio ", intermedio)
+print("Fin de programa")
