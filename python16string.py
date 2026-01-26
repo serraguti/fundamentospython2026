@@ -1,0 +1,2 @@
+print("Ejemplos clase STRING")
+ 
