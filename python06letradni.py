@@ -2,7 +2,7 @@ print("Calcular letra NIF")
 print("Introduzca numero DNI")
 dni = int(input())
 #( nº DNI - (ENTERO(nº DNI / 23) * 23
-resultado = dni - ((dni / 23) * 23)
+resultado = dni - (int(dni / 23) * 23)
 print(resultado)
 if (resultado == 0):
     print("T")
