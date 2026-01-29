@@ -10,14 +10,31 @@ def menuCalculadora():
     print("1.- Sumar")
     print("2.- Restar")
     print("3.- Multiplicar")
+    print("4.- Introducir nuevos números")
     print("Selecciona una opción")
 
+#Creamos un metodo que devolverá el número introducido
+#En este método, tendremos un bucle infinito hasta que
+#nos de un número
+def getNumero():
+    print("Introduzca un número")
+    #ALMACENAMOS LO QUE ESCRIBA EL USUARIO
+    #EN UNA VARIABLE string
+    aux = input()
+    #Entramos en un bucle mientras que NO sean NUMEROS
+    while (aux.isdigit() == False):
+        print("Eso no era un numero")
+        print("Introduzca número")
+        aux = input()
+    #Convertimos el texto a numero
+    num = int(aux)
+    #Devolvemos el numero desde el metodo
+    return num
+        
 #Programa principal MAIN
 print("Programa calculadora")
-print("Introduce numero 1")
-numero1 = int(input())
-print("Introduce numero 2")
-numero2 = int(input())
+numero1 = getNumero()
+numero2 = getNumero()
 #Quiero mostrar el menu calculadora, hasta cuando???
 #Cuando el usuario ponga SALIR ( 0 ), salimos del bucle
 #Vamos a dar un valor por defecto a opcion para que 
@@ -33,6 +50,9 @@ while (opcion != 0):
         operacion = restarNumeros(numero1, numero2)
     elif (opcion == 3):
         operacion = multiplicarNumeros(numero1, numero2)
+    elif (opcion == 4):
+        numero1 = getNumero()
+        numero2 = getNumero()
     else:
         print("Opción no valida")
     print("Operacion: ", operacion)
