@@ -41,3 +41,6 @@ print("tupla[1], ", tupla[1])
 #La tupla no se puede modificar
 #tupla[1] = "Vainilla"
 print(tupla)
+#Quiero recorrer cada elemento de la tupla
+for elem in tupla:
+    print(elem)
