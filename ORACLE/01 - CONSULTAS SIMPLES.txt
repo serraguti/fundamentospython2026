@@ -1,0 +1,91 @@
+--PODEMOS TENER VARIAS CONSULTAS EN ESTE SCRIPT
+--SOLAMENTE SE EJECUTA EN LA QUE ESTEMOS POSICIONADOS (CONTROL + ENTER)
+--NO EXISTE DIFERENCIA CASE SENSITIVE
+--EL * SE UTILIZA PARA INDICAR TODAS LAS COLUMNAS DE UNA TABLA
+--select COLUMNA1, COLUMNA2 from TABLA;
+select * from DEPT;
+select DNOMBRE from DEPT;
+--EXISTEN CONSULTAS QUE SON MAS OPTIMAS QUE OTRAS Y DEVUELVEN LO MISMO
+select DEPT_NO, DNOMBRE, LOC from DEPT;
+--ORDENAR LOS DATOS: order by CAMPO
+select * from EMP order by SALARIO desc;
+select * from EMP order by OFICIO desc;
+--FILTROS DE CONSULTAS
+--permiten filtrar registros por columnas en sus datos, utilizan el operador where
+--Si el dato a filtrar NO es un número, se utilizan las comillas simples '
+--operadores condicionales
+/*
+= IGUAL
+<> DISTINTO
+> MAYOR
+>= MAYOR O IGUAL
+< MENOR
+<= MENOR O IGUAL
+*/
+--mostrar los empleados del departamento 10
+--where CAMPO = VALOR
+select * from EMP where DEPT_NO = 10;
+--mostrar todos los empleados con oficio director
+--Oracle diferencian en sus datos STRING
+select * from EMP where OFICIO = 'DIRECTOR';
+select * from EMP where OFICIO = 'director';
+--mostrar los empleados que sean distintos al departamento 10
+select * from EMP where DEPT_NO <> 10;
+--select * from EMP where DEPT_NO != 10;
+--OPERADORES RELACIONALES
+--permiten filtrar por mas de una condicion, solamente podemos tener un where
+--and: Todas las condiciones se deben cumplir
+--or: Devuelve registros de cada condición
+--not: Negación de una condición.
+--Mostrar todos los empleados con oficio director y un salario mayor a 300.000
+select * from EMP where OFICIO='DIRECTOR' 
+and SALARIO > 300000;
+--Mostrar todos los empleados que sean del departamento 10 y del departamento 20
+select * from EMP where DEPT_NO=10 or DEPT_NO=20;
+--Mostrar todos los empleados que NO sean del departamento 20
+select * from EMP where NOT DEPT_NO=20; --negacion nunca
+select * from EMP where DEPT_NO <> 20;
+--Existen otra serie de operadores de comparación además de los básicos
+--between busca entre dos rangos inclusive
+--Mostrar todos los empleados que tengan un salario entre 123500 y 318500
+select * from EMP where SALARIO between 123500 and 318500;
+select * from EMP where SALARIO >= 123500 and SALARIO <= 318500;
+--Operador IN permite buscar entre diferentes valores de un mismo campo
+--Mostrar todos los empleados del departamento 10 y 20 y del 30
+--y del 40, 50,66,88
+select * from EMP where DEPT_NO=10 or DEPT_NO=20 or DEPT_NO=30
+or DEPT_NO=40 or DEPT_NO=50 or DEPT_NO=66 or DEPT_NO=88;
+select * from EMP where DEPT_NO in (10, 20, 30, 40, 50, 66,88);
+--Operador NOT IN que busca entre diferentes valores de un mismo campo y 
+--devuelve los que no correspondan
+--Mostrar todos los empleados que no estén en el departamento 10 y 20
+select * from EMP where NOT DEPT_NO in (10, 20); --ESTO ES UNA NEGACION, NO EFICIENTE
+select * from EMP where DEPT_NO not in (10, 20);
+--Tenemos un operador que nos permite hacer búsquedas dentro de Textos.
+--Es el operador like y utiliza caracteres especiales para las busquedas:
+    -- ? Busca si el caracter es un número
+    -- _ Cualquier unico caracter
+    -- % Cualquier caracter y cualquier tamaño
+--Mostrar todos los empleados cuyo apellido comienza en s
+select * from EMP where APELLIDO like 's%';
+--Mostrar todos los empleados cuyo apellido comienza en s y finalicen en a
+select * from EMP where APELLIDO like 's%a';
+--Mostrar todos los empleados cuyo apellido tenga 4 letras
+select * from EMP where APELLIDO like '____';
+select * from EMP where APELLIDO like '_a%';
+--Clausula distinct elimina datos repetidos de la consulta
+--Se suele utilizar con pocos campos
+select distinct OFICIO from EMP;
+--Campos calculados.  Son columnas que no existen en la tabla y que 
+--podemos generar con una consulta.
+--Los campos calculados siempre deben tener un ALIAS
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP;
+--No podemos utilizar where con campos calculados (mentira).
+    --where filtra sobre la tabla
+    --Si queremos filtrar sobre un campo calculado, debemos escribir el 
+    --calculo de nuevo para el where
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP 
+where (SALARIO + COMISION) >= 300000;
+--Si podemos utilizar order by con campos calculados.
+    --order by ordena sobre el cursor
+select APELLIDO, OFICIO, SALARIO + COMISION as TOTAL from EMP order by TOTAL;
