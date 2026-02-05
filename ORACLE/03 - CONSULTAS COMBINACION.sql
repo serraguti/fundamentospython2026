@@ -89,3 +89,28 @@ select EMP.APELLIDO, EMP.OFICIO
 , DEPT.DNOMBRE, DEPT.LOC
 from EMP
 cross join DEPT;
+--Quiero visualizar la suma salarial de la PLANTILLA 
+--por cada Nombre de Hospital.
+select sum(PLANTILLA.SALARIO) as SUMASALARIAL, HOSPITAL.NOMBRE
+from PLANTILLA
+inner join HOSPITAL
+on PLANTILLA.HOSPITAL_COD = HOSPITAL.HOSPITAL_COD
+group by HOSPITAL.NOMBRE;
+--Quiero el número de empleados que trabajan en cada Localidad.
+select count(EMP.EMP_NO) as EMPLEADOS, DEPT.LOC
+from EMP
+right join DEPT
+on EMP.DEPT_NO = DEPT.DEPT_NO
+group by DEPT.LOC;
+--Mostrar el Apellido, Función, Nombre de hospital, 
+--dirección del hospital 
+--y nombre de sala de los empleados de la Plantilla.
+select PLANTILLA.APELLIDO, PLANTILLA.FUNCION
+, HOSPITAL.NOMBRE, HOSPITAL.DIRECCION
+, SALA.NOMBRE
+from PLANTILLA
+inner join HOSPITAL
+on PLANTILLA.HOSPITAL_COD=HOSPITAL.HOSPITAL_COD
+inner join SALA
+on HOSPITAL.HOSPITAL_COD=SALA.HOSPITAL_COD
+and PLANTILLA.SALA_COD=SALA.SALA_COD;
