@@ -1,0 +1,21 @@
+Esto es un Oracle que no ocupa tanto espacio ni memoria RAM como Docker, por si vuestro equipo es antiguo.
+
+SOLAMENTE WINDOWS
+
+Simplemente instalamos con Siguiente..siguiente...
+Nos pedirá una contraseña para nuestro usuario en la instalación, ponemos: oracle
+En la instalación, nos dará dos mini errores, los cerramos y a seguir.
+
+
+https://www.dropbox.com/scl/fi/bbs2ojcmt4cnamwbe39kp/OracleXE112_Win32-1.zip?rlkey=ggp355cbmzuvz4iaeontnssu1&st=jl2pa653&dl=0
+
+Una vez instalado, para entrar a esta base de datos:
+
+Host: LOCALHOST
+User: SYSTEM 
+Password: oracle
+Port: 1521
+Nombre del Servicio: XE
+
+Nota: El script para introducir los datos de HOSPITAL en esta base de datos es el siguiente:
+00 - SCRIPT HOSPITAL ORACLE_XE.TXT
