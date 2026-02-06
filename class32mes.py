@@ -1,4 +1,5 @@
 #https://fjtoscano.medium.com/instalar-oracle-database-xe-en-mac-m1-d5d2d17fc00c
+#python3 -m pip install --upgrade pip
 class Mes:
     def __init__(self):
         self.nombre = ""
