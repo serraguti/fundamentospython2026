@@ -53,4 +53,8 @@ select * from HOSPITAL;
 TRUNCATE TABLE HOSPITAL;
 delete from HOSPITAL;
 select * from PLANTILLA where HOSPITAL_COD=55;
+select * from EMP;
+insert into EMP (APELLIDO, FECHA_ALT)
+values ('FECHA NUEVA', sysdate);
+
 
