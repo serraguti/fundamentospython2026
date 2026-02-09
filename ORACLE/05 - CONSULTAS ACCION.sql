@@ -34,3 +34,23 @@ where SALA_COD in
 (select SALA_COD from SALA where NOMBRE='psiquiatria');
 select SALA_COD from SALA where NOMBRE='psiquiatria';
 select * from SALA;
+--Insertar un nuevo empleado de la Plantilla.
+--Su nombre es CABRALES, Sala 4, Turno N 
+--y trabajará en el Hospital El Carmen.
+--El Id debemos buscar el máximo libre.
+insert into PLANTILLA
+(HOSPITAL_COD, SALA_COD, APELLIDO, TURNO, EMPLEADO_NO)
+values
+(null
+, 4, 'CABRALES', 'M',
+(select max(EMPLEADO_NO) + 1 from PLANTILLA));
+select * from PLANTILLA;
+select * from PLANTILLA
+where HOSPITAL_COD is null or 
+HOSPITAL_COD not in (select HOSPITAL_COD from HOSPITAL);
+rollback;
+select * from HOSPITAL;
+TRUNCATE TABLE HOSPITAL;
+delete from HOSPITAL;
+select * from PLANTILLA where HOSPITAL_COD=55;
+
