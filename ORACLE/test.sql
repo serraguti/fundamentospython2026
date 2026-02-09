@@ -1,1 +1,2 @@
-select * from DEPT;
+select * from HOSPITAL;
+
