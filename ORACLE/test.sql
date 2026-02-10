@@ -1,8 +1,10 @@
 insert into DEPT values(88, 'NUEVO', 'NUEVO');
+select * from HOSPITAL;
 select * from DEPT;
+insert into HOSPITAL values(1,'NOM','DIR','TLF', 9);
 select * from DEPT where DEPT_NO=1;
 select APELLIDO, DIRECCION from ENFERMO where INSCRIPCION=10995;
 select APELLIDO, FUNCION from PLANTILLA where TURNO='T';
-
+desc DEPT;
 delete from ENFERMO;
 rollback;
