@@ -1,3 +1,4 @@
+insert into DEPT values(88, 'NUEVO', 'NUEVO');
 select * from DEPT;
 select * from DEPT where DEPT_NO=1;
 select APELLIDO, DIRECCION from ENFERMO where INSCRIPCION=10995;
