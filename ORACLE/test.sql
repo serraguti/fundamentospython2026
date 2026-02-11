@@ -1,4 +1,5 @@
 select * from EMP where OFICIO='DIRECTOR';
+select * from PLANTILLA;
 update EMP set SALARIO = SALARIO + 1 where OFICIO='DIRECTOR';
 select APELLIDO, OFICIO, DEPT_NO from EMP where DEPT_NO=0;
 select APELLIDO, OFICIO, DEPT_NO from EMP where DEPT_NO=0 or 1=1;
