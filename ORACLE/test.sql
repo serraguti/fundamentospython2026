@@ -1,5 +1,9 @@
-select * from EMP where OFICIO='DIRECTOR';
 select * from PLANTILLA;
+select max(DOCTOR_NO) + 1 as MAXIMO from DOCTOR;
+select NOMBRE, HOSPITAL_COD from HOSPITAL;
+select distinct FUNCION from PLANTILLA;
+select * from EMP where OFICIO='DIRECTOR';
+select * from PLANTILLA where FUNCION='ENFERMERA';
 update EMP set SALARIO = SALARIO + 1 where OFICIO='DIRECTOR';
 select APELLIDO, OFICIO, DEPT_NO from EMP where DEPT_NO=0;
 select APELLIDO, OFICIO, DEPT_NO from EMP where DEPT_NO=0 or 1=1;
