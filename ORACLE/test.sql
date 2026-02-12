@@ -1,4 +1,4 @@
-select * from PLANTILLA;
+select * from ENFERMO;
 select max(DOCTOR_NO) + 1 as MAXIMO from DOCTOR;
 select NOMBRE, HOSPITAL_COD from HOSPITAL;
 select distinct FUNCION from PLANTILLA;
